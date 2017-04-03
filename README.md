@@ -29,3 +29,9 @@ Open `index.html` in Google Chrome.
 ### React Styles
 
 - Always favor stateless components
+
+### Code Review/Wishlist
+
+* This code seems like a piece that would possibly be reused.  This should be refactored into an easily reusable React Component with JSX instead of doing things simply via ReactDOM.
+* getPersonList method currently gets data from an apparently old endpoint, which returns an empty list.  This should be updated to use [the new dataset.](https://willowtreeapps.com/api/v1.0/profiles/)
+* In the data transformations, it's possibly better to switch out of regex matching and into the .split function due to the [better performance](https://jsperf.com/regex-split-test)
