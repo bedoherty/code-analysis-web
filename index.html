@@ -103,33 +103,18 @@
          */
         function getPersonList() {
             return new Promise((resolve, reject) => {
-                fetch('http://api.namegame.willowtreemobile.com/').then(function(response) {
+                fetch('https://willowtreeapps.com/api/v1.0/profiles/').then(function(response) {
                     if (response.status !== 200) {
                         reject(new Error("Error!"));
                     }
 
-                    response.json().then((imageList) => {
-                        resolve(imageList);
+                    response.json().then((apiData) => {
+                        resolve(apiData.items);
+                        console.log(apiData.items);
                     });
                 });
             });
         }
-
-
-        /*==================================================
-
-           DATA TRANSFORMS
-
-         ***************************************************/
-
-
-        const getLastName = (fullName) => {
-            return fullName.split(" ")[1];
-        };
-
-        const getFirstName = (fullName) => {
-            return fullName.split(" ")[0];
-        };
 
         /**
          * Fisher-Yates shuffle
@@ -199,7 +184,7 @@
             };
         }
 
-        const sortByFirstName = sortObjListByProp('name');
+        const sortByFirstName = (personList) => sortObjListByProp(personList);
 
         const sortByLastName = (personList) => sortByFirstName(personList).reverse();
 
