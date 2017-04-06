@@ -142,7 +142,7 @@
          */
         function filterByName(searchForName, personList) {
             return personList.filter((person) => {
-                return person.name === searchForName;
+                return (person.firstName + " " + person.lastName).startsWith(searchForName);
             });
         }
 
@@ -184,9 +184,10 @@
             };
         }
 
-        const sortByFirstName = (personList) => sortObjListByProp(personList);
+        //  Define specific versions of sorting
+        const sortByFirstName = sortObjListByProp("firstName");
 
-        const sortByLastName = (personList) => sortByFirstName(personList).reverse();
+        const sortByLastName = sortObjListByProp("lastname");
 
 
         /*==================================================
@@ -206,9 +207,9 @@
         });
 
         const ListRow = (props) => React.DOM.tr({ key: props.person.name }, [
-            React.DOM.td({ key: 'thumb' }, React.createElement(Thumbnail, { src: props.person.url })),
-            React.DOM.td({ key: 'first' }, null, getFirstName(props.person.name)),
-            React.DOM.td({ key: 'last' }, null, getLastName(props.person.name)),
+            React.DOM.td({ key: 'thumb' }, React.createElement(Thumbnail, { src: props.person.headshot.url })),
+            React.DOM.td({ key: 'first' }, null, props.person.firstName),
+            React.DOM.td({ key: 'last' }, null, props.person.lastName),
         ]);
 
         const ListContainer = (props) => React.DOM.table({ className: 'list-container' }, [
