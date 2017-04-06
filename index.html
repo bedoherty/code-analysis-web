@@ -124,11 +124,11 @@
 
 
         function getLastName(fullName) {
-            return fullName.match(/\w+/g)[1];
+            return fullName.split(" ")[1];
         }
 
         const getFirstName = (fullName) => {
-            return fullName.match(/\w+/g)[0];
+            return fullName.split(" ")[0];
         };
 
         /**
