@@ -136,7 +136,7 @@
          */
         function shuffleList(list) {
             // Make a copy & don't mutate the passed in list
-            let result = list.slice(1);
+            let result = list.slice(0);
 
             let tmp, j, i = list.length - 1
 
@@ -181,7 +181,7 @@
         function sortObjListByProp(prop) {
             return function(objList) {
                 // Make a copy & don't mutate the passed in list
-                let result = objList.slice(1);
+                let result = objList.slice(0);
 
                 result.sort((a, b) => {
                     if (a[prop] < b[prop]) {
